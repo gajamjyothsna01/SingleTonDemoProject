@@ -23,8 +23,21 @@ public class SpawnManager : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if(Physics.Raycast(ray.origin,ray.direction,out hitInfo))
             {
-                Instantiate(trashCanPreafab,hitInfo.point, Quaternion.identity);
+                GameObject tempTrashCan = Instantiate(trashCanPreafab,hitInfo.point, Quaternion.identity);
+                //Accessing the Instance from other class
+                GameManager.Instance.AddTrashCan(tempTrashCan);
+                Debug.Log(GameManager.Instance.TrashCanPrefabs.Count);
+
+               
             }
+           
         }
+        if(Input.GetMouseButtonDown(1))
+        {
+            GameManager.Instance.RemoveTrashCan(GameManager.Instance.TrashCanPrefabs[0]);
+            Debug.Log(GameManager.Instance.TrashCanPrefabs.Count);
+        }
+      
+
     }
 }
