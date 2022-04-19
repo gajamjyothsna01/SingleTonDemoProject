@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     [SerializeField]
-    private GameObject healthCanPreafab;
+    private GameObject trashCanPreafab;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +23,7 @@ public class SpawnManager : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if(Physics.Raycast(ray.origin,ray.direction,out hitInfo))
             {
-                Instantiate(healthCanPreafab,hitInfo.point, Quaternion.identity);
+                Instantiate(trashCanPreafab,hitInfo.point, Quaternion.identity);
             }
         }
     }
